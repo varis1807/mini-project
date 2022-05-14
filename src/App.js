@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import DisplayArea from "./DisplayArea";
+import Form from "./Form";
 
 function App() {
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [phone, setPhone] = useState("");
+  let [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    alert("Theme has been changed");
+  }, [theme]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="my-container">
+      <DisplayArea name={name} email={email} phone={phone} theme={theme} />
+      <Form
+        theme={theme}
+        handleName={setName}
+        handleEmail={setEmail}
+        handlePhone={setPhone}
+        handleTheme={setTheme}
+      />
     </div>
   );
 }
